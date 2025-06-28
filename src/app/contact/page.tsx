@@ -1,19 +1,18 @@
-import { Metadata } from "next"
-import { Layout } from "@/components/layout/layout"
 import { ContactForm } from "@/components/forms/contact-form"
+import { Layout } from "@/components/layout/layout"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { 
-  MapPin, 
-  Mail, 
-  Phone, 
-  Clock, 
-  MessageCircle,
+import {
   Calendar,
+  Clock,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
   Shield,
-  Zap,
-  Users
+  Users,
+  Zap
 } from "lucide-react"
+import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Contact Noscere - Schedule Your Blockchain Consultation",
@@ -101,9 +100,6 @@ export default function ContactPage() {
       <section className="py-24 bg-gradient-to-br from-light-bg via-light-bg to-light-elevated dark:from-dark-bg dark:via-dark-bg dark:to-dark-elevated">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="secondary" className="mb-6">
-              Get In Touch
-            </Badge>
             <h1 className="text-5xl lg:text-6xl font-bold text-light-text-primary dark:text-dark-text-primary mb-6">
               Let&apos;s Discuss Your{" "}
               <span className="bg-gradient-to-r from-brand-blue to-brand-purple bg-clip-text text-transparent">
@@ -111,7 +107,7 @@ export default function ContactPage() {
               </span>
             </h1>
             <p className="text-xl text-light-text-secondary dark:text-dark-text-secondary mb-8 leading-relaxed">
-              Ready to explore how blockchain technology can transform your business? 
+              Ready to explore how blockchain technology can transform your business?
               Schedule a free consultation with our experts to discuss your specific needs and goals.
             </p>
           </div>
@@ -125,7 +121,7 @@ export default function ContactPage() {
             <div className="lg:col-span-2">
               <ContactForm />
             </div>
-            
+
             <div className="space-y-8">
               {/* Contact Information */}
               <Card>
@@ -151,7 +147,7 @@ export default function ContactPage() {
                           </div>
                         </div>
                       )
-                      
+
                       return info.link ? (
                         <a key={index} href={info.link} className="block">
                           {content}
@@ -211,7 +207,7 @@ export default function ContactPage() {
                 Common questions about our consultation process
               </p>
             </div>
-            
+
             <div className="space-y-8">
               {faqs.map((faq, index) => (
                 <Card key={index}>
@@ -245,18 +241,18 @@ export default function ContactPage() {
               Prefer to Talk Directly?
             </h2>
             <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-              Sometimes it&apos;s easier to have a quick conversation. Feel free to reach out directly 
+              Sometimes it&apos;s easier to have a quick conversation. Feel free to reach out directly
               via email or phone, and we&apos;ll schedule a time that works for you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
+              <a
                 href="mailto:hello@noscere.com"
                 className="inline-flex items-center justify-center px-6 py-3 bg-white text-brand-blue font-medium rounded-lg hover:bg-gray-100 transition-colors"
               >
                 <Mail className="mr-2 h-4 w-4" />
                 Email Us Directly
               </a>
-              <a 
+              <a
                 href="tel:+15551234567"
                 className="inline-flex items-center justify-center px-6 py-3 border border-white text-white font-medium rounded-lg hover:bg-white hover:text-brand-blue transition-colors"
               >

@@ -1,20 +1,17 @@
-import { Metadata } from "next"
 import { Layout } from "@/components/layout/layout"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { 
-  ArrowRight, 
-  GraduationCap, 
-  Code, 
-  Lightbulb, 
-  Building2, 
-  Coins,
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  ArrowRight,
+  Building2,
   CheckCircle,
-  Clock,
-  DollarSign,
-  Users
+  Code,
+  Coins,
+  GraduationCap,
+  Lightbulb
 } from "lucide-react"
+import { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
@@ -197,37 +194,6 @@ const processSteps = [
 export default function ServicesPage() {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="py-24 bg-gradient-to-br from-light-bg via-light-bg to-light-elevated dark:from-dark-bg dark:via-dark-bg dark:to-dark-elevated">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="secondary" className="mb-6">
-              Our Services
-            </Badge>
-            <h1 className="text-5xl lg:text-6xl font-bold text-light-text-primary dark:text-dark-text-primary mb-6">
-              Comprehensive{" "}
-              <span className="bg-gradient-to-r from-brand-blue to-brand-purple bg-clip-text text-transparent">
-                Blockchain Solutions
-              </span>
-            </h1>
-            <p className="text-xl text-light-text-secondary dark:text-dark-text-secondary mb-8 leading-relaxed">
-              From education to implementation, we provide end-to-end blockchain services 
-              that drive real business value for enterprise clients across industries.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
-                <Link href="/contact">
-                  Schedule Consultation
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link href="#services">Explore Services</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Services Grid */}
       <section id="services" className="py-24 bg-light-bg dark:bg-dark-bg">
@@ -236,14 +202,14 @@ export default function ServicesPage() {
             {services.map((service, index) => {
               const Icon = service.icon
               const isEven = index % 2 === 0
-              
+
               return (
-                <div 
-                  key={service.id} 
+                <div
+                  key={service.id}
                   id={service.id}
-                  className={`grid lg:grid-cols-2 gap-12 items-center ${!isEven ? 'lg:grid-flow-col-dense' : ''}`}
+                  className="flex justify-center"
                 >
-                  <div className={!isEven ? 'lg:col-start-2' : ''}>
+                  <div className="max-w-4xl">
                     <Card className="h-full">
                       <CardHeader>
                         <div className="flex items-center mb-4">
@@ -261,6 +227,7 @@ export default function ServicesPage() {
                           {service.description}
                         </p>
                       </CardHeader>
+
                       <CardContent className="space-y-6">
                         <div>
                           <h4 className="font-semibold text-light-text-primary dark:text-dark-text-primary mb-3">
@@ -275,8 +242,49 @@ export default function ServicesPage() {
                             ))}
                           </div>
                         </div>
-                        
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-light-elevated dark:border-dark-elevated">
+                        <div>
+                          <h3 className="text-xl font-semibold text-light-text-primary dark:text-dark-text-primary mb-4">
+                            Benefits
+                          </h3>
+
+                          <ul className="space-y-3">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+
+                              {service.benefits.map((benefit) => (
+                                <li key={benefit} className="flex items-start">
+                                  <ArrowRight className="h-5 w-5 text-brand-blue mr-3 mt-0.5 flex-shrink-0" />
+                                  <span className="text-light-text-secondary dark:text-dark-text-secondary">
+                                    {benefit}
+                                  </span>
+                                </li>
+                              ))}
+                            </div>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <h3 className="text-xl font-semibold text-light-text-primary dark:text-dark-text-primary mb-4">
+                            Deliverables
+                          </h3>
+                          {service.deliverables.map((deliverable) => (
+                            <Badge key={deliverable} variant="secondary" className="justify-start p-3 mr-3">
+                              {deliverable}
+                            </Badge>
+                          ))}
+                        </div>
+                        <div className={'lg:col-start-1'}>
+                          <div className="space-y-8">
+
+
+                            <Button asChild className="w-full sm:w-auto">
+                              <Link href={`/contact?service=${service.id}`}>
+                                Get Started with {service.title}
+
+                              </Link>
+                            </Button>
+                          </div>
+                        </div>
+                        {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-light-elevated dark:border-dark-elevated">
                           <div className="flex items-center">
                             <Clock className="h-4 w-4 text-brand-blue mr-2" />
                             <div>
@@ -298,49 +306,9 @@ export default function ServicesPage() {
                               <div className="text-sm font-medium">Custom</div>
                             </div>
                           </div>
-                        </div>
+                        </div> */}
                       </CardContent>
                     </Card>
-                  </div>
-                  
-                  <div className={!isEven ? 'lg:col-start-1' : ''}>
-                    <div className="space-y-8">
-                      <div>
-                        <h3 className="text-xl font-semibold text-light-text-primary dark:text-dark-text-primary mb-4">
-                          Benefits
-                        </h3>
-                        <ul className="space-y-3">
-                          {service.benefits.map((benefit) => (
-                            <li key={benefit} className="flex items-start">
-                              <ArrowRight className="h-5 w-5 text-brand-blue mr-3 mt-0.5 flex-shrink-0" />
-                              <span className="text-light-text-secondary dark:text-dark-text-secondary">
-                                {benefit}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div>
-                        <h3 className="text-xl font-semibold text-light-text-primary dark:text-dark-text-primary mb-4">
-                          Deliverables
-                        </h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                          {service.deliverables.map((deliverable) => (
-                            <Badge key={deliverable} variant="secondary" className="justify-start p-3">
-                              {deliverable}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      <Button asChild className="w-full sm:w-auto">
-                        <Link href={`/contact?service=${service.id}`}>
-                          Get Started with {service.title}
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Link>
-                      </Button>
-                    </div>
                   </div>
                 </div>
               )
@@ -350,7 +318,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Process Section */}
-      <section className="py-24 bg-light-card dark:bg-dark-card">
+      <section className="py-24 bg-light-card dark:bg-dark-bg">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-light-text-primary dark:text-dark-text-primary mb-6">
@@ -360,7 +328,7 @@ export default function ServicesPage() {
               A proven methodology that ensures successful blockchain implementation
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {processSteps.map((step, index) => (
               <div key={index} className="text-center group">
@@ -385,32 +353,32 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-brand-blue to-brand-purple">
+      {/* <section className="py-24 bg-gradient-to-r from-brand-blue to-brand-purple">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
               Ready to Get Started?
             </h2>
             <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-              Choose the service that best fits your needs, or contact us for a custom solution. 
+              Choose the service that best fits your needs, or contact us for a custom solution.
               Every engagement begins with a free consultation to understand your specific requirements.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 variant="secondary"
-                asChild 
+                asChild
                 className="bg-white text-brand-blue hover:bg-gray-100"
               >
                 <Link href="/contact">
                   Schedule Free Consultation
-                  <ArrowRight className="ml-2 h-4 w-4" />
+
                 </Link>
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                asChild 
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
                 className="border-white text-white hover:bg-white hover:text-brand-blue"
               >
                 <Link href="/about">Learn About Our Team</Link>
@@ -418,7 +386,7 @@ export default function ServicesPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </Layout>
   )
 }

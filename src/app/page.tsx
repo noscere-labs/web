@@ -1,16 +1,22 @@
 import { Layout } from "@/components/layout/layout"
 import { Hero } from "@/components/sections/hero"
-import { ServicesOverview } from "@/components/sections/services-overview"
-import { TrustIndicators } from "@/components/sections/trust-indicators"
-import { CTA } from "@/components/sections/cta"
+import { StructuredData } from "@/components/seo/structured-data"
 
 export default function Home() {
+  const webPageData = {
+    title: "Noscere - Demystifying Blockchain for Enterprise",
+    description: "We partner with enterprise clients to demystify blockchain technology and unlock its strategic value, turning emerging possibilities into competitive advantage.",
+    url: "https://noscere.com",
+    breadcrumb: [{ name: "Home", path: "/" }]
+  }
+
   return (
     <Layout>
+      <StructuredData type="WebPage" data={webPageData} />
       <Hero />
-      <ServicesOverview />
-      <TrustIndicators />
-      <CTA />
+      {/* <ServicesOverview /> */}
+      {/* <TrustIndicators /> */}
+      {/* <CTA /> */}
     </Layout>
   )
 }

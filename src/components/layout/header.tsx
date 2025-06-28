@@ -1,17 +1,17 @@
 "use client"
 
-import * as React from "react"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { Menu, Moon, Sun, X } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Menu, X, Moon, Sun } from "lucide-react"
-import { cn } from "@/lib/utils"
+import * as React from "react"
 
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
-  { name: "Lab", href: "/lab" },
   { name: "Blog", href: "/blog" },
 ]
 
@@ -28,7 +28,7 @@ export function Header() {
   const toggleDarkMode = () => {
     const newDarkMode = !isDarkMode
     setIsDarkMode(newDarkMode)
-    
+
     if (newDarkMode) {
       document.documentElement.classList.add('dark')
       localStorage.setItem('theme', 'dark')
@@ -41,7 +41,7 @@ export function Header() {
   React.useEffect(() => {
     const savedTheme = localStorage.getItem('theme')
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    
+
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
       document.documentElement.classList.add('dark')
       setIsDarkMode(true)
@@ -52,13 +52,15 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-light-elevated dark:border-dark-elevated bg-light-bg/95 dark:bg-dark-bg/95 backdrop-blur supports-[backdrop-filter]:bg-light-bg/60 dark:supports-[backdrop-filter]:bg-dark-bg/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="flex items-center">
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-brand-blue to-brand-purple flex items-center justify-center">
-              <span className="text-white font-bold text-sm">N</span>
-            </div>
-            <span className="text-xl font-semibold text-light-text-primary dark:text-dark-text-primary">
-              Noscere
-            </span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/png/nosc_color_logo.png"
+              alt="Noscere"
+              width={140}
+              height={48}
+              className="w-auto text-brand-blue"
+              priority
+            />
           </Link>
         </div>
 
