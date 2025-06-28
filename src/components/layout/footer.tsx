@@ -16,8 +16,6 @@ const footerLinks = {
     { name: "Enterprise Development", href: "/services#enterprise-development" },
   ],
   resources: [
-    { name: "Lab", href: "/lab" },
-    { name: "Documentation", href: "/docs" },
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
   ],
