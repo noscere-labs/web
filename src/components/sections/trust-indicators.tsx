@@ -8,7 +8,7 @@ const testimonials = [
     rating: 5
   },
   {
-    quote: "The team's expertise in Bitcoin development is unmatched. They delivered our project on time and exceeded expectations.",
+    quote: "The team's expertise in Blockchain development is unmatched. They delivered our project on time and exceeded expectations.",
     author: "Michael Rodriguez",
     title: "Head of Innovation, FinanceFirst",
     rating: 5

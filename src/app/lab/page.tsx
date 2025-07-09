@@ -5,16 +5,16 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "BSV Blockchain Lab - Interactive Tools & Demos | Noscere",
   description: "Exploring BSV Blockchain technology.",
-  keywords: ["blockchain tools", "bitcoin", "BSV blockchain"],
+  keywords: ["blockchain tools", "blockchain", "BSV blockchain"],
 }
 
 
 
 const learningResources = [
   {
-    title: "Bitcoin Whitepaper",
-    description: "The original Bitcoin whitepaper by Satoshi Nakamoto",
-    url: "https://bitcoin.org/bitcoin.pdf",
+    title: "Blockchain Whitepaper",
+    description: "The original Blockchain whitepaper by Satoshi Nakamoto",
+    url: "https://blockchain.org/blockchain.pdf",
     type: "PDF"
   },
 ]
@@ -28,18 +28,18 @@ export default function LabPage() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex items-center justify-center mb-6">
               <Badge variant="secondary" className="text-lg px-4 py-2">
-                Bitcoin Lab
+                Blockchain Lab
               </Badge>
             </div>
             <h1 className="text-5xl lg:text-6xl font-bold text-light-text-primary dark:text-dark-text-primary mb-6">
               Interactive{" "}
               <span className="bg-gradient-to-r from-brand-blue to-brand-purple bg-clip-text text-transparent">
-                Bitcoin Tools
+                Blockchain Tools
               </span>
             </h1>
             <p className="text-xl text-light-text-secondary dark:text-dark-text-secondary mb-8 leading-relaxed">
-              Explore Bitcoin technology through hands-on tools and demonstrations.
-              Perfect for learning about cryptography, hashing, and encoding used in the Bitcoin protocol.
+              Explore Blockchain technology through hands-on tools and demonstrations.
+              Perfect for learning about cryptography, hashing, and encoding used in the Blockchain protocol.
             </p>
 
 

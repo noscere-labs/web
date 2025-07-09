@@ -10,7 +10,7 @@ const footerLinks = {
     { name: "Contact", href: "/contact" },
   ],
   services: [
-    { name: "Bitcoin Education", href: "/services#bitcoin-education" },
+    { name: "Blockchain Education", href: "/services#blockchain-education" },
     { name: "Developer Training", href: "/services#developer-training" },
     { name: "Consultancy", href: "/services#consultancy" },
     { name: "Enterprise Development", href: "/services#enterprise-development" },

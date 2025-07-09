@@ -1,17 +1,17 @@
 "use client"
 
-import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Copy, ArrowLeftRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { ArrowLeftRight, Copy } from "lucide-react"
+import { useState } from "react"
 
-// Base58 alphabet used by Bitcoin
+// Base58 alphabet used by Blockchain
 const BASE58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 
 function base58Encode(buffer: Uint8Array): string {
   if (buffer.length === 0) return ""
-  
+
   let digits = [0]
   for (let i = 0; i < buffer.length; i++) {
     let carry = buffer[i] || 0
@@ -26,20 +26,20 @@ function base58Encode(buffer: Uint8Array): string {
       carry = Math.floor(carry / 58)
     }
   }
-  
+
   // Count leading zeros
   let leadingZeros = 0
   for (let i = 0; i < buffer.length && buffer[i] === 0; i++) {
     leadingZeros++
   }
-  
+
   // Convert to string
   return "1".repeat(leadingZeros) + digits.reverse().map(d => BASE58_ALPHABET[d] || '').join("")
 }
 
 function base58Decode(str: string): Uint8Array | null {
   if (str.length === 0) return new Uint8Array(0)
-  
+
   try {
     let bytes = [0]
     for (let i = 0; i < str.length; i++) {
@@ -47,7 +47,7 @@ function base58Decode(str: string): Uint8Array | null {
       if (!char) return null
       const charIndex = BASE58_ALPHABET.indexOf(char)
       if (charIndex === -1) return null
-      
+
       let carry = charIndex
       for (let j = 0; j < bytes.length; j++) {
         const byte = bytes[j] || 0
@@ -60,18 +60,18 @@ function base58Decode(str: string): Uint8Array | null {
         carry = carry >> 8
       }
     }
-    
+
     // Count leading ones
     let leadingOnes = 0
     for (let i = 0; i < str.length && str[i] === "1"; i++) {
       leadingOnes++
     }
-    
+
     const result = new Uint8Array(leadingOnes + bytes.length)
     bytes.reverse().forEach((byte, i) => {
       result[leadingOnes + i] = byte
     })
-    
+
     return result
   } catch {
     return null
@@ -139,15 +139,15 @@ export function Base58Converter() {
   }
 
   const examples = [
-    { 
-      label: "Bitcoin Address", 
-      hex: "00f54a5851e9372b87810a8e60cdd2e7cfd80b6e31c7f18fe8", 
-      base58: "1PMycacnJaSqwwJqjawXBEHAN95N4LdYkG" 
+    {
+      label: "Blockchain Address",
+      hex: "00f54a5851e9372b87810a8e60cdd2e7cfd80b6e31c7f18fe8",
+      base58: "1PMycacnJaSqwwJqjawXBEHAN95N4LdYkG"
     },
-    { 
-      label: "Simple Text", 
-      hex: "48656c6c6f20576f726c64", 
-      base58: "JxF12TrwUP45BMd" 
+    {
+      label: "Simple Text",
+      hex: "48656c6c6f20576f726c64",
+      base58: "JxF12TrwUP45BMd"
     }
   ]
 
@@ -157,10 +157,10 @@ export function Base58Converter() {
         <CardTitle className="flex items-center gap-2">
           <ArrowLeftRight className="h-5 w-5" />
           Base58 Converter
-          <Badge variant="secondary">Bitcoin Encoding</Badge>
+          <Badge variant="secondary">Blockchain Encoding</Badge>
         </CardTitle>
         <CardDescription>
-          Convert between hexadecimal and Base58 encoding used in Bitcoin addresses and keys.
+          Convert between hexadecimal and Base58 encoding used in Blockchain addresses and keys.
         </CardDescription>
       </CardHeader>
       <CardContent>

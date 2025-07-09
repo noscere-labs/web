@@ -5,24 +5,11 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Search, X, Filter } from "lucide-react"
-
-interface Category {
-  id: string
-  name: string
-  slug: string
-  _count?: {
-    posts: number
-  }
-}
-
-interface Tag {
-  id: string
-  name: string
-  slug: string
-}
+import { BlogCategory } from "@/lib/blog"
+import { Tag } from "@prisma/client"
 
 interface BlogSearchProps {
-  categories: Category[]
+  categories: BlogCategory[]
   tags: Tag[]
   selectedCategory: string | undefined
   selectedTags: string[]

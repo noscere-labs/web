@@ -1,10 +1,10 @@
 "use client"
 
-import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Copy, RefreshCw, Eye, EyeOff } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Copy, Eye, EyeOff, RefreshCw } from "lucide-react"
+import { useState } from "react"
 
 // Note: This is a simplified demonstration for educational purposes
 // In a real application, you would use proper cryptographic libraries
@@ -18,22 +18,22 @@ function generateRandomHex(length: number): string {
   return result
 }
 
-function generateBitcoinAddress(): { address: string; privateKey: string; publicKey: string } {
+function generateBlockchainAddress(): { address: string; privateKey: string; publicKey: string } {
   // This is a simplified simulation for demo purposes
   const privateKey = generateRandomHex(64)
   const publicKey = generateRandomHex(66)
   const address = `1${generateRandomHex(33)}`
-  
+
   return { address, privateKey, publicKey }
 }
 
-export function BitcoinAddressGenerator() {
+export function BlockchainAddressGenerator() {
   const [keys, setKeys] = useState<{ address: string; privateKey: string; publicKey: string } | null>(null)
   const [showPrivateKey, setShowPrivateKey] = useState(false)
   const [copiedField, setCopiedField] = useState<string | null>(null)
 
   const generateNew = () => {
-    setKeys(generateBitcoinAddress())
+    setKeys(generateBlockchainAddress())
     setShowPrivateKey(false)
   }
 
@@ -51,11 +51,11 @@ export function BitcoinAddressGenerator() {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          Bitcoin Address Generator
+          Blockchain Address Generator
           <Badge variant="secondary">Educational</Badge>
         </CardTitle>
         <CardDescription>
-          Generate Bitcoin addresses and key pairs for educational purposes. 
+          Generate Blockchain addresses and key pairs for educational purposes.
           Never use these for real transactions!
         </CardDescription>
       </CardHeader>
@@ -71,7 +71,7 @@ export function BitcoinAddressGenerator() {
               <div className="p-4 bg-light-elevated dark:bg-dark-elevated rounded-lg">
                 <div className="flex items-center justify-between mb-2">
                   <label className="text-sm font-medium text-light-text-primary dark:text-dark-text-primary">
-                    Bitcoin Address
+                    Blockchain Address
                   </label>
                   <Button
                     variant="ghost"
@@ -137,7 +137,7 @@ export function BitcoinAddressGenerator() {
                   {showPrivateKey ? keys.privateKey : '•'.repeat(64)}
                 </div>
                 <p className="text-xs text-red-600 dark:text-red-400 mt-2">
-                  ⚠️ Private keys control access to Bitcoin. Never share them in real applications!
+                  ⚠️ Private keys control access to Blockchain. Never share them in real applications!
                 </p>
               </div>
             </div>

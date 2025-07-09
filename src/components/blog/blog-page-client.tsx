@@ -5,137 +5,27 @@ import { BlogSearch } from "@/components/blog/blog-search"
 import { Layout } from "@/components/layout/layout"
 import { Button } from "@/components/ui/button"
 import { LoadingSkeleton } from "@/components/ui/loading"
+import { BlogCategory, BlogPost } from "@/lib/blog"
+import { Tag } from "@prisma/client"
 import { BookOpen, Calendar, TrendingUp, Users } from "lucide-react"
 import { useEffect, useState } from "react"
 
-// Mock data for demonstration - in a real app, this would come from your database
-const mockPosts = [
-  {
-    id: "1",
-    title: "Understanding Bitcoin's Lightning Network for Enterprise Applications",
-    slug: "bitcoin-lightning-network-enterprise",
-    excerpt: "Explore how Bitcoin's Lightning Network can revolutionize enterprise payments with instant, low-cost transactions and improved scalability.",
-    content: "The Lightning Network represents a significant leap forward in Bitcoin's capability to handle enterprise-scale transactions. By creating a secondary layer on top of the Bitcoin blockchain, it enables instant, low-cost payments that are perfect for business applications...",
-    published: true,
-    publishedAt: new Date("2024-01-15"),
-    createdAt: new Date("2024-01-15"),
-    author: {
-      id: "1",
-      name: "Alex Chen",
-      email: "alex@noscere.com"
-    },
-    categories: [
-      { id: "1", name: "Bitcoin", slug: "bitcoin" },
-      { id: "2", name: "Enterprise", slug: "enterprise" }
-    ],
-    tags: [
-      { id: "1", name: "lightning-network", slug: "lightning-network" },
-      { id: "2", name: "payments", slug: "payments" },
-      { id: "3", name: "scalability", slug: "scalability" }
-    ]
-  },
-  {
-    id: "2",
-    title: "Blockchain Implementation Strategy: A Step-by-Step Guide for CTOs",
-    slug: "blockchain-implementation-strategy-ctos",
-    excerpt: "A comprehensive guide for technology leaders on how to successfully implement blockchain solutions in enterprise environments.",
-    content: "Implementing blockchain technology in an enterprise environment requires careful planning, stakeholder alignment, and technical expertise. This guide provides CTOs with a roadmap...",
-    published: true,
-    publishedAt: new Date("2024-01-10"),
-    createdAt: new Date("2024-01-10"),
-    author: {
-      id: "2",
-      name: "Sarah Rodriguez",
-      email: "sarah@noscere.com"
-    },
-    categories: [
-      { id: "2", name: "Enterprise", slug: "enterprise" },
-      { id: "3", name: "Strategy", slug: "strategy" }
-    ],
-    tags: [
-      { id: "4", name: "implementation", slug: "implementation" },
-      { id: "5", name: "cto", slug: "cto" },
-      { id: "6", name: "planning", slug: "planning" }
-    ]
-  },
-  {
-    id: "3",
-    title: "Smart Contract Security: Best Practices for Enterprise Development",
-    slug: "smart-contract-security-best-practices",
-    excerpt: "Learn essential security practices for developing and deploying smart contracts in enterprise blockchain applications.",
-    content: "Smart contract security is paramount in enterprise blockchain development. A single vulnerability can result in significant financial losses and damage to reputation...",
-    published: true,
-    publishedAt: new Date("2024-01-05"),
-    createdAt: new Date("2024-01-05"),
-    author: {
-      id: "3",
-      name: "Michael Thompson",
-      email: "michael@noscere.com"
-    },
-    categories: [
-      { id: "4", name: "Development", slug: "development" },
-      { id: "5", name: "Security", slug: "security" }
-    ],
-    tags: [
-      { id: "7", name: "smart-contracts", slug: "smart-contracts" },
-      { id: "8", name: "security", slug: "security" },
-      { id: "9", name: "best-practices", slug: "best-practices" }
-    ]
-  },
-  {
-    id: "4",
-    title: "Tokenization in Traditional Finance: Opportunities and Challenges",
-    slug: "tokenization-traditional-finance",
-    excerpt: "Examining how tokenization is transforming traditional financial instruments and the challenges enterprises face in adoption.",
-    content: "Tokenization represents one of the most promising applications of blockchain technology in traditional finance. By converting physical and digital assets into blockchain tokens...",
-    published: true,
-    publishedAt: new Date("2023-12-28"),
-    createdAt: new Date("2023-12-28"),
-    author: {
-      id: "4",
-      name: "Emma Wilson",
-      email: "emma@noscere.com"
-    },
-    categories: [
-      { id: "6", name: "Finance", slug: "finance" },
-      { id: "7", name: "Tokenization", slug: "tokenization" }
-    ],
-    tags: [
-      { id: "10", name: "tokenization", slug: "tokenization" },
-      { id: "11", name: "finance", slug: "finance" },
-      { id: "12", name: "assets", slug: "assets" }
-    ]
+interface BlogPageClientProps {
+  initialPosts: BlogPost[]
+  categories: BlogCategory[]
+  tags: Tag[]
+  stats: {
+    totalPosts: number
+    totalCategories: number
+    totalTags: number
+    totalAuthors: number
+    postsThisMonth: number
   }
-]
+}
 
-const mockCategories = [
-  { id: "1", name: "Bitcoin", slug: "bitcoin", _count: { posts: 1 } },
-  { id: "2", name: "Enterprise", slug: "enterprise", _count: { posts: 2 } },
-  { id: "3", name: "Strategy", slug: "strategy", _count: { posts: 1 } },
-  { id: "4", name: "Development", slug: "development", _count: { posts: 1 } },
-  { id: "5", name: "Security", slug: "security", _count: { posts: 1 } },
-  { id: "6", name: "Finance", slug: "finance", _count: { posts: 1 } },
-  { id: "7", name: "Tokenization", slug: "tokenization", _count: { posts: 1 } }
-]
-
-const mockTags = [
-  { id: "1", name: "lightning-network", slug: "lightning-network" },
-  { id: "2", name: "payments", slug: "payments" },
-  { id: "3", name: "scalability", slug: "scalability" },
-  { id: "4", name: "implementation", slug: "implementation" },
-  { id: "5", name: "cto", slug: "cto" },
-  { id: "6", name: "planning", slug: "planning" },
-  { id: "7", name: "smart-contracts", slug: "smart-contracts" },
-  { id: "8", name: "security", slug: "security" },
-  { id: "9", name: "best-practices", slug: "best-practices" },
-  { id: "10", name: "tokenization", slug: "tokenization" },
-  { id: "11", name: "finance", slug: "finance" },
-  { id: "12", name: "assets", slug: "assets" }
-]
-
-export function BlogPageClient() {
-  const [posts, setPosts] = useState(mockPosts)
-  const [filteredPosts, setFilteredPosts] = useState(mockPosts)
+export function BlogPageClient({ initialPosts, categories, tags, stats }: BlogPageClientProps) {
+  const [posts, setPosts] = useState(initialPosts)
+  const [filteredPosts, setFilteredPosts] = useState(initialPosts)
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState<string | undefined>()
   const [selectedTags, setSelectedTags] = useState<string[]>([])
@@ -187,11 +77,11 @@ export function BlogPageClient() {
     setSelectedTags([])
   }
 
-  const stats = [
-    { label: "Total Posts", value: posts.length, icon: BookOpen },
-    { label: "Categories", value: mockCategories.length, icon: TrendingUp },
-    { label: "Authors", value: 4, icon: Users },
-    { label: "This Month", value: 2, icon: Calendar }
+  const statsDisplay = [
+    { label: "Total Posts", value: stats.totalPosts, icon: BookOpen },
+    { label: "Categories", value: stats.totalCategories, icon: TrendingUp },
+    { label: "Authors", value: stats.totalAuthors, icon: Users },
+    { label: "This Month", value: stats.postsThisMonth, icon: Calendar }
   ]
 
   return (
@@ -199,14 +89,14 @@ export function BlogPageClient() {
 
 
       {/* Blog Content */}
-      <section className="py-24 bg-light-bg dark:bg-dark-bg">
+      <section className="py-12 bg-light-bg dark:bg-dark-bg">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-4 gap-8">
+          <div className="grid lg:grid-cols-4 gap-8 items-start">
             {/* Sidebar */}
             <div className="lg:col-span-1">
               <BlogSearch
-                categories={mockCategories}
-                tags={mockTags}
+                categories={categories}
+                tags={tags}
                 selectedCategory={selectedCategory}
                 selectedTags={selectedTags}
                 searchQuery={searchQuery}

@@ -12,7 +12,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Noscere - Demystifying Blockchain for Enterprise",
   description: "We partner with enterprise clients to demystify blockchain technology and unlock its strategic value, turning emerging possibilities into competitive advantage.",
-  keywords: ["blockchain", "bitcoin", "enterprise", "consultancy", "cryptocurrency", "training"],
+  keywords: ["blockchain", "blockchain", "enterprise", "consultancy", "cryptocurrency", "training"],
   authors: [{ name: "Noscere" }],
   creator: "Noscere",
   openGraph: {

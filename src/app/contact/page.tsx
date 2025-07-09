@@ -17,7 +17,7 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Contact Noscere - Schedule Your Blockchain Consultation",
   description: "Get in touch with Noscere for expert blockchain consulting. Schedule a free consultation to discuss your enterprise blockchain needs and implementation strategy.",
-  keywords: ["contact noscere", "blockchain consultation", "enterprise blockchain", "bitcoin consulting"],
+  keywords: ["contact noscere", "blockchain consultation", "enterprise blockchain", "blockchain consulting"],
 }
 
 const contactInfo = [

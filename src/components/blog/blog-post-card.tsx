@@ -3,32 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, User, ArrowRight } from "lucide-react"
 import { formatDate } from "@/lib/utils"
-
-interface BlogPost {
-  id: string
-  title: string
-  slug: string
-  excerpt: string | null
-  content: string
-  published: boolean
-  publishedAt: Date | null
-  createdAt: Date
-  author: {
-    id: string
-    name: string | null
-    email: string
-  }
-  categories: Array<{
-    id: string
-    name: string
-    slug: string
-  }>
-  tags: Array<{
-    id: string
-    name: string
-    slug: string
-  }>
-}
+import { BlogPost } from "@/lib/blog"
 
 interface BlogPostCardProps {
   post: BlogPost

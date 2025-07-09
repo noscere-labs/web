@@ -4,18 +4,18 @@ import Link from "next/link"
 
 const services = [
   {
-    title: "Bitcoin Education",
-    description: "Comprehensive training programs designed to educate enterprise teams on Bitcoin fundamentals, use cases, and strategic implementation.",
+    title: "Blockchain Education",
+    description: "Comprehensive training programs designed to educate enterprise teams on Blockchain fundamentals, use cases, and strategic implementation.",
     icon: GraduationCap,
-    href: "/services#bitcoin-education",
+    href: "/services#blockchain-education",
     features: ["Executive Workshops", "Technical Deep Dives", "Custom Curricula"]
   },
   {
     title: "Developer Training",
-    description: "Hands-on technical training for development teams to build, deploy, and maintain Bitcoin-based applications and infrastructure.",
+    description: "Hands-on technical training for development teams to build, deploy, and maintain Blockchain-based applications and infrastructure.",
     icon: Code,
     href: "/services#developer-training",
-    features: ["Lightning Network", "Bitcoin Script", "Security Best Practices"]
+    features: ["Lightning Network", "Blockchain Script", "Security Best Practices"]
   },
   {
     title: "Strategic Consultancy",
@@ -62,15 +62,15 @@ export function ServicesOverview() {
                   <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-brand-blue to-brand-purple flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <Icon className="h-6 w-6 text-white" />
                   </div>
-                  
+
                   <h3 className="text-xl font-semibold text-light-text-primary dark:text-dark-text-primary mb-3">
                     {service.title}
                   </h3>
-                  
+
                   <p className="text-light-text-secondary dark:text-dark-text-secondary mb-4 leading-relaxed">
                     {service.description}
                   </p>
-                  
+
                   <ul className="space-y-2 mb-6">
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-center text-sm text-light-text-secondary dark:text-dark-text-secondary">
@@ -79,7 +79,7 @@ export function ServicesOverview() {
                       </li>
                     ))}
                   </ul>
-                  
+
                   <Button asChild variant="outline" className="w-full group-hover:bg-brand-blue group-hover:text-white group-hover:border-brand-blue">
                     <Link href={service.href}>
                       Learn More

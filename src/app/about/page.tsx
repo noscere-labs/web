@@ -1,24 +1,24 @@
 import { Layout } from "@/components/layout/layout"
 import { Card, CardContent } from "@/components/ui/card"
-import { Globe, Lightbulb, Shield, Target, Users } from "lucide-react"
+import { Lightbulb, Shield, Target, Users } from "lucide-react"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "About Noscere - Blockchain Consultancy Experts",
   description: "Learn about Noscere's mission to demystify blockchain technology for enterprises. Meet our team of experts and discover our approach to blockchain consultation.",
-  keywords: ["about noscere", "blockchain consultancy", "bitcoin experts", "enterprise blockchain", "team"],
+  keywords: ["about noscere", "blockchain consultancy", "blockchain experts", "enterprise blockchain", "team"],
 }
 
 const values = [
   {
     icon: Shield,
-    title: "Security First",
-    description: "We prioritize enterprise-grade security in every solution, ensuring your blockchain implementations are robust and protected."
+    title: "Privacy & Security",
+    description: "We prioritize enterprise-grade privacy and security in every solution, ensuring your implementations are protected."
   },
   {
     icon: Lightbulb,
     title: "Innovation",
-    description: "We stay at the forefront of blockchain technology, bringing cutting-edge solutions to solve real business challenges."
+    description: "We sit at the forefront of blockchain technology, leveraging cutting-edge solutions to solve real business challenges."
   },
   {
     icon: Users,
@@ -27,8 +27,8 @@ const values = [
   },
   {
     icon: Target,
-    title: "Results-Driven",
-    description: "Every project is measured against concrete business outcomes, ensuring tangible value from blockchain adoption."
+    title: "Value-Driven",
+    description: "We focus on delivering tangible business value, ensuring your blockchain investments yield measurable returns."
   }
 ]
 
@@ -37,7 +37,7 @@ const team = [
     name: "Craig Porter",
     role: "Founder & CEO",
     bio: "Blockchain solutions architect 6 years in distributed systems design.",
-    expertise: ["Bitcoin Protocol", "Enterprise Architecture", "Tokenisation"],
+    expertise: ["Blockchain Protocol", "Enterprise Architecture", "Tokenisation"],
     avatar: "CP"
   }
 ]
@@ -64,53 +64,29 @@ export default function AboutPage() {
                 To know
               </span>
             </h1>
-            <p className="text-xl text-light-text-secondary dark:text-dark-text-secondary mb-8 leading-relaxed">
-              Founded in 2019, Noscere has been at the forefront of enterprise blockchain adoption,
-              helping organizations navigate the public ledger with confidence and clarity.
-            </p>
-          </div>
-        </div>
-      </section>
+            <div>
+              <p className="text-light-text-secondary dark:text-dark-text-secondary mb-6 leading-relaxed">
+                &ldquo;Noscere&rdquo; is Latin for &ldquo;to know&rdquo; and &ldquo;to understand.&rdquo;
+              </p>
+              <p className="text-light-text-secondary dark:text-dark-text-secondary mb-6 leading-relaxed">
 
-      {/* Mission Section */}
-      <section className="py-24 bg-light-card dark:bg-dark-card">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h3 className="text-2xl font-semibold text-light-text-primary dark:text-dark-text-primary mb-4">
-                  What Noscere Means
-                </h3>
-                <p className="text-light-text-secondary dark:text-dark-text-secondary mb-6 leading-relaxed">
-                  &ldquo;Noscere&rdquo; is Latin for &ldquo;to know&rdquo; and &ldquo;to understand.&rdquo;
-                  This perfectly encapsulates our mission: to help enterprises truly understand blockchain technology,
-                  not just implement it. We believe that knowledge and understanding are foundational to successful
-                  blockchain adoption.
-                </p>
-                <p className="text-light-text-secondary dark:text-dark-text-secondary leading-relaxed">
-                  Our approach goes beyond technical implementation. We focus on education, strategic planning,
-                  and long-term partnership to ensure our clients don&apos;t just deploy blockchain solutions,
-                  but weild them for competitive advantage.
-                </p>
-              </div>
-              <div className="relative">
-                <div className="bg-gradient-to-br from-brand-blue to-brand-purple p-8 rounded-2xl text-white">
-                  <Globe className="h-12 w-12 mb-4 opacity-80" />
-                  <h4 className="text-xl font-semibold mb-3">Global Impact</h4>
-                  <p className="text-blue-100 leading-relaxed">
-                    From Silicon Valley startups to Fortune 500 corporations, we&apos;ve helped organizations
-                    across 15 countries unlock the strategic value of blockchain technology.
-                  </p>
-                </div>
-              </div>
+                This perfectly encapsulates our mission: to help enterprises truly understand blockchain technology,
+                not just implement it. We believe that knowledge and understanding are foundational to successful
+                blockchain adoption.
+              </p>
+              <p className="text-light-text-secondary dark:text-dark-text-secondary leading-relaxed">
+                Our approach goes beyond technical implementation. We focus on education, strategic planning,
+                and long-term partnership to ensure our clients don&apos;t just deploy blockchain solutions,
+                but weild them for competitive advantage.
+              </p>
             </div>
+
           </div>
         </div>
       </section>
 
       {/* Values Section */}
-      <section className="py-24 bg-light-bg dark:bg-dark-bg">
+      <section className="py-24 bg-light-card dark:bg-dark-card">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-light-text-primary dark:text-dark-text-primary mb-6">
@@ -143,6 +119,36 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Mission Section */}
+      {/* <section className="py-24 bg-light-card dark:bg-dark-card"> */}
+      <section className="py-24 bg-light-bg dark:bg-dark-bg">
+
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+
+            <div className="grid lg:grid-cols-1 gap-12 items-center">
+
+              <p className="text-xl text-light-text-secondary dark:text-dark-text-secondary mb-8 leading-relaxed">
+                Founded in 2019, Noscere has been at the forefront of enterprise blockchain adoption,
+                helping organizations navigate the public ledger with confidence and clarity.
+              </p>
+              {/* <div className="relative">
+                <div className="bg-gradient-to-br from-brand-blue to-brand-purple p-8 rounded-2xl text-white">
+                  <Globe className="h-12 w-12 mb-4 opacity-80" />
+                  <h4 className="text-xl font-semibold mb-3">Global Impact</h4>
+                  <p className="text-blue-100 leading-relaxed">
+                    From Silicon Valley startups to Fortune 500 corporations, we&apos;ve helped organizations
+                    across 15 countries unlock the strategic value of blockchain technology.
+                  </p>
+                </div>
+              </div> */}
+            </div>
+          </div>
+        </div>
+      </section>
+
+
 
 
     </Layout>

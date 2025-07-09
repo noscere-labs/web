@@ -1,10 +1,10 @@
 "use client"
 
-import { useState } from "react"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Send, CheckCircle, AlertCircle } from "lucide-react"
+import { AlertCircle, CheckCircle, Send } from "lucide-react"
+import { useState } from "react"
 
 interface FormData {
   name: string
@@ -18,8 +18,8 @@ interface FormData {
 }
 
 const services = [
-  "Bitcoin Education",
-  "Developer Training", 
+  "Blockchain Education",
+  "Developer Training",
   "Strategic Consultancy",
   "Enterprise Development",
   "Tokenised Solutions",
@@ -61,7 +61,7 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
+
     try {
       // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 2000))
@@ -101,7 +101,7 @@ export function ContactForm() {
           <p className="text-light-text-secondary dark:text-dark-text-secondary mb-4">
             We&apos;ve received your consultation request and will get back to you within 24 hours.
           </p>
-          <Button 
+          <Button
             onClick={() => setSubmitStatus("idle")}
             variant="outline"
             className="w-full"
@@ -139,7 +139,7 @@ export function ContactForm() {
                 placeholder="John Smith"
               />
             </div>
-            
+
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-light-text-primary dark:text-dark-text-primary mb-2">
                 Email Address *
@@ -172,7 +172,7 @@ export function ContactForm() {
                 placeholder="Your Company"
               />
             </div>
-            
+
             <div>
               <label htmlFor="role" className="block text-sm font-medium text-light-text-primary dark:text-dark-text-primary mb-2">
                 Your Role
@@ -225,7 +225,7 @@ export function ContactForm() {
                 ))}
               </select>
             </div>
-            
+
             <div>
               <label htmlFor="timeline" className="block text-sm font-medium text-light-text-primary dark:text-dark-text-primary mb-2">
                 Timeline
@@ -271,8 +271,8 @@ export function ContactForm() {
           )}
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               disabled={isSubmitting}
               className="flex-1"
             >
@@ -288,7 +288,7 @@ export function ContactForm() {
                 </>
               )}
             </Button>
-            
+
             <div className="flex items-center justify-center text-sm text-light-text-muted dark:text-dark-text-muted">
               <Badge variant="secondary" className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
                 Free Consultation

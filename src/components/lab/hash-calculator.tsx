@@ -1,10 +1,10 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Copy, Hash } from "lucide-react"
+import { useEffect, useState } from "react"
 
 // Simple SHA-256 implementation for demonstration
 // In production, use a proper crypto library
@@ -34,7 +34,7 @@ export function HashCalculator() {
       try {
         const sha256Hash = await sha256(input)
         const sha256DoubleHash = await sha256(sha256Hash)
-        
+
         setHashes({
           sha256: sha256Hash,
           sha256Double: sha256DoubleHash
@@ -59,7 +59,7 @@ export function HashCalculator() {
 
   const examples = [
     { label: "Hello World", value: "Hello World" },
-    { label: "Bitcoin", value: "Bitcoin" },
+    { label: "Blockchain", value: "Blockchain" },
     { label: "Block Header", value: "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f" },
     { label: "Satoshi", value: "Satoshi Nakamoto" }
   ]
@@ -73,7 +73,7 @@ export function HashCalculator() {
           <Badge variant="secondary">SHA-256</Badge>
         </CardTitle>
         <CardDescription>
-          Calculate SHA-256 and double SHA-256 hashes used throughout the Bitcoin protocol.
+          Calculate SHA-256 and double SHA-256 hashes used throughout the Blockchain protocol.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -148,7 +148,7 @@ export function HashCalculator() {
                   {hashes.sha256Double || "Enter text to see double hash..."}
                 </div>
                 <p className="text-xs text-light-text-muted dark:text-dark-text-muted mt-2">
-                  Double SHA-256 is used in Bitcoin for transaction IDs and block headers
+                  Double SHA-256 is used in Blockchain for transaction IDs and block headers
                 </p>
               </div>
 
