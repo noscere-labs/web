@@ -3,7 +3,7 @@
 ## Project Overview
 
 **Company**: Noscere  
-**Mission**: We partner with enterprise clients to demystify blockchain technology and unlock its strategic value, turning emerging possibilities into competitive advantages.
+**Mission**: We partner with enterprise clients to demystify blockchain technology and unlock its strategic value, turning emerging possibilities into competitive advantage.
 
 **Project Goal**: Build a professional, high-performance website for a blockchain consultancy company that showcases expertise, builds trust, and generates enterprise leads.
 
@@ -20,6 +20,7 @@
 ## Website Structure
 
 ### 1. Homepage (`/`)
+
 - **Inspiration**: Similar style to https://www.cambridgeconsultants.com
 - **Focus**: Fast loading, professional, enterprise-focused
 - **Key Elements**:
@@ -29,13 +30,16 @@
   - Call-to-action for consultations
 
 ### 2. About Page (`/about`)
+
 - Company history and background
 - Explanation of "Noscere" (Latin for "to know/understand")
 - Team information
 - Company values and approach
 
 ### 3. Services Page (`/services`)
+
 Detail the following services:
+
 - **Bitcoin Education** - Training programs for enterprises
 - **Bitcoin Developer Training** - Technical skill development
 - **Consultancy** - Strategic blockchain advisory
@@ -43,12 +47,14 @@ Detail the following services:
 - **Tokenised Solutions** - Token-based business models
 
 ### 4. Lab Page (`/lab`)
+
 - Interactive Bitcoin tools and widgets
 - Technical demonstrations
 - Proof-of-concept applications
 - Educational resources
 
 ### 5. Blog (`/blog`)
+
 - Fully featured custom blog system
 - SEO optimized with proper meta tags
 - Categories and tags
@@ -61,6 +67,7 @@ Detail the following services:
 ### Color Palette
 
 #### Dark Mode (Primary)
+
 - **Background**: `#0a0a0a`
 - **Card Background**: `#111827`
 - **Elevated Surface**: `#1f2937`
@@ -73,6 +80,7 @@ Detail the following services:
 - **Muted Text**: `#64748b`
 
 #### Light Mode
+
 - **Background**: `#ffffff`
 - **Card Background**: `#f8fafc`
 - **Elevated Surface**: `#f1f5f9`
@@ -85,11 +93,13 @@ Detail the following services:
 - **Muted Text**: `#64748b`
 
 ### Typography
+
 - **Font**: Inter (via next/font/google)
 - **Headings**: Clean, modern hierarchy
 - **Body**: Readable, professional
 
 ### Brand Guidelines
+
 - Professional and trustworthy
 - Modern and innovative
 - Enterprise-focused
@@ -100,6 +110,7 @@ Detail the following services:
 Implement the following Next.js 15.3 optimizations:
 
 ### Core Optimizations
+
 1. **Turbopack** - Enable for development and builds
 2. **Partial Pre-rendering (PPR)** - For mixed static/dynamic content
 3. **React Server Components** - Minimize client-side JavaScript
@@ -107,6 +118,7 @@ Implement the following Next.js 15.3 optimizations:
 5. **Image Optimization** - Next.js Image component with proper sizing
 
 ### Advanced Optimizations
+
 6. **TypeScript Performance** - Optimized tsconfig.json
 7. **Multi-layer Caching** - API routes, database queries, and CDN
 8. **Font Optimization** - next/font with zero layout shift
@@ -114,6 +126,7 @@ Implement the following Next.js 15.3 optimizations:
 10. **Bundle Analysis** - Regular optimization monitoring
 
 ### Target Metrics
+
 - **LCP**: < 2.5 seconds
 - **FID**: < 100ms
 - **CLS**: < 0.1
@@ -123,6 +136,7 @@ Implement the following Next.js 15.3 optimizations:
 ## SEO Implementation
 
 ### Technical SEO
+
 - **Title Tags**: 50-60 characters, keyword-rich
 - **Meta Descriptions**: 150-160 characters, compelling
 - **Heading Structure**: Proper H1-H6 hierarchy with keywords
@@ -130,12 +144,14 @@ Implement the following Next.js 15.3 optimizations:
 - **Core Web Vitals**: Optimized performance metrics
 
 ### Content SEO
+
 - **Keyword Research**: Blockchain, Bitcoin, enterprise consulting
 - **Content Strategy**: High-quality, user-intent focused
 - **Regular Updates**: Fresh content for better rankings
 - **Structured Data**: JSON-LD for rich snippets
 
 ### Blog SEO
+
 - Category and tag systems
 - Author schemas
 - Article structured data
@@ -145,6 +161,7 @@ Implement the following Next.js 15.3 optimizations:
 ## Database Schema (Prisma)
 
 ### Blog System
+
 ```prisma
 model Post {
   id          String   @id @default(cuid())
@@ -160,7 +177,7 @@ model Post {
   authorId    String
   categories  Category[]
   tags        Tag[]
-  
+
   @@map("posts")
 }
 
@@ -170,7 +187,7 @@ model Category {
   slug        String @unique
   description String?
   posts       Post[]
-  
+
   @@map("categories")
 }
 
@@ -179,7 +196,7 @@ model Tag {
   name  String @unique
   slug  String @unique
   posts Post[]
-  
+
   @@map("tags")
 }
 
@@ -190,7 +207,7 @@ model User {
   bio      String?
   avatar   String?
   posts    Post[]
-  
+
   @@map("users")
 }
 ```
@@ -198,17 +215,20 @@ model User {
 ## Component Architecture
 
 ### Layout Components
+
 - `Header` - Navigation with dark/light mode toggle
 - `Footer` - Company info, links, contact
 - `Layout` - Main wrapper with consistent styling
 
 ### Page Components
+
 - `Hero` - Homepage hero section
 - `ServiceCard` - Individual service displays
 - `BlogCard` - Blog post previews
 - `ContactForm` - Lead generation forms
 
 ### UI Components
+
 - `Button` - Consistent styling across variants
 - `Card` - Reusable content containers
 - `Badge` - Tags, categories, status indicators
@@ -218,13 +238,16 @@ model User {
 ## Content Strategy
 
 ### Homepage Content
+
 - **Hero**: "Demystifying Blockchain for Enterprise Success"
 - **Services**: Brief overview of 5 core services
 - **Trust**: Client logos, testimonials, case studies
 - **CTA**: "Schedule a Consultation"
 
 ### Service Pages
+
 Each service should include:
+
 - Clear problem statement
 - Solution overview
 - Benefits and outcomes
@@ -233,6 +256,7 @@ Each service should include:
 - Call-to-action
 
 ### Blog Content
+
 - Technical tutorials
 - Industry insights
 - Market analysis
@@ -242,6 +266,7 @@ Each service should include:
 ## Development Workflow
 
 ### File Structure
+
 ```
 src/
 ├── app/
@@ -268,12 +293,14 @@ src/
 ```
 
 ### Git Workflow
+
 1. Feature branches for each page/component
 2. Descriptive commit messages
 3. Regular pushes with incremental progress
 4. Testing before merges
 
 ### Testing Strategy
+
 - Component testing with Jest/Testing Library
 - E2E testing with Playwright
 - Performance testing with Lighthouse
@@ -282,6 +309,7 @@ src/
 ## Deployment Configuration
 
 ### Environment Variables
+
 ```env
 # Database
 DATABASE_URL="postgresql://..."
@@ -295,6 +323,7 @@ NEXT_PUBLIC_GA_ID="..."
 ```
 
 ### Vercel Configuration
+
 ```json
 {
   "buildCommand": "npm run build",
@@ -307,12 +336,14 @@ NEXT_PUBLIC_GA_ID="..."
 ## Success Metrics
 
 ### Performance Goals
+
 - **Page Load Speed**: < 2 seconds
 - **Mobile Performance**: 90+ Lighthouse score
 - **SEO Score**: 95+ Lighthouse score
 - **Accessibility**: 100 Lighthouse score
 
 ### Business Goals
+
 - **Lead Generation**: Contact form conversions
 - **Engagement**: Blog readership and time on site
 - **Trust Building**: Professional presentation

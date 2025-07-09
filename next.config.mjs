@@ -1,3 +1,5 @@
+import { withPayload } from '@payloadcms/next/withPayload'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Enable experimental features for Next.js 15.3
@@ -65,4 +67,4 @@ const nextConfig = {
   },
 }
 
-export default nextConfig;
+export default withPayload(nextConfig);

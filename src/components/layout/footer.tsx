@@ -1,5 +1,6 @@
+import { Github, Linkedin, Mail, Twitter } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
-import { Github, Twitter, Linkedin, Mail } from "lucide-react"
 
 const footerLinks = {
   company: [
@@ -9,14 +10,12 @@ const footerLinks = {
     { name: "Contact", href: "/contact" },
   ],
   services: [
-    { name: "Bitcoin Education", href: "/services#bitcoin-education" },
+    { name: "Blockchain Education", href: "/services#blockchain-education" },
     { name: "Developer Training", href: "/services#developer-training" },
     { name: "Consultancy", href: "/services#consultancy" },
     { name: "Enterprise Development", href: "/services#enterprise-development" },
   ],
   resources: [
-    { name: "Lab", href: "/lab" },
-    { name: "Documentation", href: "/docs" },
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
   ],
@@ -35,17 +34,18 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-brand-blue to-brand-purple flex items-center justify-center">
-                <span className="text-white font-bold text-sm">N</span>
-              </div>
-              <span className="text-xl font-semibold text-light-text-primary dark:text-dark-text-primary">
-                Noscere
-              </span>
+            <Link href="/" className="flex items-center mb-4">
+              <Image
+                src="/svg/nosc_white_logo.svg"
+                alt="Noscere"
+                width={140}
+                height={32}
+                className="h-8 w-auto text-light-text-primary dark:text-dark-text-primary"
+              />
             </Link>
             <p className="text-light-text-secondary dark:text-dark-text-secondary mb-4 max-w-md">
-              We partner with enterprise clients to demystify blockchain technology and unlock its strategic value, 
-              turning emerging possibilities into competitive advantages.
+              We partner with enterprise clients to demystify blockchain technology and unlock its strategic value,
+              turning emerging possibilities into competitive advantage.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((item) => {
